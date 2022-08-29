@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 
-import "./Modal.css";
+//import "./Modal.css";
 
 const open = {
 	position: "fixed",
