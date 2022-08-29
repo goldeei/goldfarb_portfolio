@@ -1,0 +1,36 @@
+.navbar {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+}
+
+.navbar-nav {
+	display: flex;
+	justify-content: space-evenly;
+	transition: width 0.1s, background-color 0.1s;
+	border-radius: 0.5rem;
+	padding: 1rem 0;
+}
+
+.navbar-center {
+	position: absolute;
+	width: 75vw;
+	top: 55%;
+}
+
+.navbar-top {
+	position: fixed;
+	margin: 0.5rem;
+	width: 100vw;
+	top: 0;
+}
+
+.navbutton {
+	border: none;
+	font-size: 0.75rem;
+	color: black;
+	background-color: white;
+	border-radius: 0.25rem;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}

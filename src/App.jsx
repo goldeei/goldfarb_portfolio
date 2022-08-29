@@ -1,34 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { RecoilRoot } from "recoil";
+import { Mesh } from "three";
+
+import Modal from "./components/modal/Modal";
+import Section from "./components/Section";
+import LandingPage from "./components/landing-page/LandingPage";
+import Navbar from "./components/navbar/Navbar";
+import NavButton from "./components/navbar/NavButton";
+import "./App.css";
+
+const FillerCube = () => {
+	const ref = useRef();
+	useFrame(() => {
+		ref.current.rotation.x += 0.01;
+	});
+	return (
+		<mesh ref={ref} position={[0, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
+			<boxGeometry />
+			<meshStandardMaterial />
+		</mesh>
+	);
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+	let resizeTimer;
+	//Stop animations on resize for width transitions
+	useEffect(() => {
+		window.addEventListener("resize", () => {
+			document.body.classList.add("halt-animation");
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => {
+				document.body.classList.remove("halt-animation");
+			}, 400);
+			return () => {
+				window.removeEventListener("resize", () => {
+					document.body.classList.add("halt-animation");
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(() => {
+						document.body.classList.remove("halt-animation");
+					}, 400);
+				});
+			};
+		});
+	});
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	return (
+		<>
+			{/* <div id="r3f-container">
+				<Canvas>
+					<color attach="background" args={["white"]} />
+					<ambientLight intensity={0.1} />
+					<directionalLight color="red" position={[10, 0, 15]} />
+					<FillerCube />
+				</Canvas>
+			</div> */}
+			<RecoilRoot>
+				{/* <Modal /> */}
+				{/* <Navbar /> */}
+				<Section
+					className={"fullscreen"}
+					key={"landing-page"}
+					name={"landing-page"}
+				>
+					<LandingPage />
+				</Section>
+
+				<Section
+					className={"fullscreen center-children"}
+					key={"about-me"}
+					name={"about-me"}
+				>
+					<p>ABOUT ME</p>
+				</Section>
+			</RecoilRoot>
+		</>
+	);
 }
 
-export default App
+export default App;
