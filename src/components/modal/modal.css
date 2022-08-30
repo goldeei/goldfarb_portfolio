@@ -1,14 +1,15 @@
-.modal-container {
+.modal-icon__close {
+    position: relative;
+    float: right;
+}
+
+.modal-backdrop {
     position: fixed;
-    right: 0;
     left: 0;
-    background-color: white;
-    padding: 0.5rem;
-    max-width: 500px;
-}
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5);
 
-.contact-icon {
-    width: inherit;
-    height: inherit;
 }
-
