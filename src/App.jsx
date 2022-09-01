@@ -9,6 +9,7 @@ import LandingPage from "./components/landing-page/LandingPage";
 import Navbar from "./components/navbar/Navbar";
 import NavButton from "./components/navbar/NavButton";
 import "./App.css";
+import { Contact } from "./components/contact/Contact";
 
 const FillerCube = () => {
 	const ref = useRef();
@@ -56,8 +57,9 @@ function App() {
 				</Canvas>
 			</div> */}
 			<RecoilRoot>
-				{/* <Modal /> */}
+				<Contact />
 				{/* <Navbar /> */}
+
 				<Section
 					className={"fullscreen"}
 					key={"landing-page"}
