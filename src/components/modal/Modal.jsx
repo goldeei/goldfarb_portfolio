@@ -31,14 +31,14 @@ const variants = {
 export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
-			<AnimatePresence>
+			<AnimatePresence exitBeforeEnter={true}>
 				{open && (
 					<Backdrop onClick={handleClose}>
 						<motion.div
 							className="modal-container"
 							onClick={(e) => e.stopPropagation()}
 						>
-							{content}
+							<div className="modal-content">{content}</div>
 						</motion.div>
 					</Backdrop>
 				)}
