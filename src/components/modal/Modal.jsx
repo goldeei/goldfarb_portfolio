@@ -31,7 +31,7 @@ const variants = {
 export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
-			<AnimatePresence>
+			<AnimatePresence exitBeforeEnter={true}>
 				{open && (
 					<Backdrop onClick={handleClose}>
 						<motion.div
