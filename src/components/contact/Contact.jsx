@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../modal/Modal";
-
+import { CloseButton } from "../buttons/Buttons";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import "./Contact.css";
 import { AnimatePresence, motion } from "framer-motion";
