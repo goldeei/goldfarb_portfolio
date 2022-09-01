@@ -18,11 +18,9 @@ export function Contact() {
 						whileInView={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						className="contact-icon__wrapper"
+						onPointerUp={() => setModalOpen(true)}
 					>
-						<BiMessageSquareDetail
-							onPointerUp={() => setModalOpen(true)}
-							className="contact-icon"
-						/>
+						<BiMessageSquareDetail className="contact-icon" />
 					</motion.div>
 				</AnimatePresence>
 			)}
