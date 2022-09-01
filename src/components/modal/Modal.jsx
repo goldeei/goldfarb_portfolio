@@ -1,61 +1,47 @@
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BiMessageSquareDetail } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
 
+import { Backdrop } from "./Backdrop";
 import "./modal.css";
 
-const open = {
-	position: "fixed",
-	top: "25%",
-	left: 0,
-	right: 0,
-	margin: "auto",
-	padding: "1rem",
-	width: "80vw",
-	height: "50%",
-	maxWidth: "500px",
-	maxHeight: "500px",
-	backgroundColor: "white",
-	borderRadius: "0.5rem",
-	zIndex: 1001
+const variants = {
+	open: {
+		position: "fixed",
+		top: "25%",
+		left: 0,
+		right: 0,
+		margin: "auto",
+		padding: "1rem",
+		width: "80vw",
+		height: "50%",
+		borderRadius: "0.5rem",
+		backgroundColor: "white",
+	},
+	closed: {
+		backgroundColor: "transparent",
+		position: "initial",
+		top: "initial",
+		left: "initial",
+		right: "initial",
+		width: "initial",
+		margin: "initial",
+	},
 };
 
-const closed = {
-	position: "initial",
-	width: "initial",
-	borderRadius: "initial",
-	zIndex: 0
-}
-
-export default function Modal() {
-	const [isOpen, setOpen] = useState(false);
-
+export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
 			<AnimatePresence>
-			{isOpen && 
-				<motion.div 
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					className="modal-backdrop"
-				/>
-			}
-			</AnimatePresence>
-			<AnimatePresence>
-				<motion.div className="modal-container" style={isOpen ? open : closed} layout>
-					{!isOpen && (
-						<motion.span layout onPointerDown={() => setOpen(!isOpen)}>
-							<BiMessageSquareDetail />
-						</motion.span>
-					)}
-					{isOpen && (
-						<motion.div layout className="modal-icon__close" onPointerDown={() => setOpen(!isOpen)}>
-							<AiOutlineClose />
+				{open && (
+					<Backdrop onClick={handleClose}>
+						<motion.div
+							className="modal-container"
+							onClick={(e) => e.stopPropagation()}
+						>
+							{content}
 						</motion.div>
-					)}
-				</motion.div>
+					</Backdrop>
+				)}
 			</AnimatePresence>
 		</>
 	);
