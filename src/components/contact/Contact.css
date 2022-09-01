@@ -1,0 +1,12 @@
+.contact-icon__wrapper {
+	position: fixed;
+	right: 0;
+	margin: 1rem;
+}
+
+.contact-icon {
+	scale: 1.75;
+	padding: 0.15rem;
+	border-radius: 0.2rem;
+	background-color: white;
+}
