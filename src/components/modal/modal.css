@@ -1,15 +1,20 @@
-.modal-icon__close {
-    position: relative;
-    float: right;
+.modal-backdrop {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-backdrop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 0.5);
-
+.modal-container {
+	width: 80vw;
+	height: 80vh;
+	max-width: 500px;
+	max-height: 500px;
+	border-radius: 1rem;
+	background-color: white;
 }
