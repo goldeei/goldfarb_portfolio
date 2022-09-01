@@ -1,6 +1,6 @@
 import React, { CSSProperties, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { CloseButton } from "../buttons/Buttons";
 import { Backdrop } from "./Backdrop";
 import "./modal.css";
 
@@ -38,6 +38,7 @@ export default function Modal({ content, open, handleClose }) {
 							className="modal-container"
 							onClick={(e) => e.stopPropagation()}
 						>
+							<CloseButton handleClose={handleClose} style={undefined} />
 							<div className="modal-content">{content}</div>
 						</motion.div>
 					</Backdrop>
