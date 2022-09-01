@@ -38,7 +38,7 @@ export default function Modal({ content, open, handleClose }) {
 							className="modal-container"
 							onClick={(e) => e.stopPropagation()}
 						>
-							{content}
+							<div className="modal-content">{content}</div>
 						</motion.div>
 					</Backdrop>
 				)}
