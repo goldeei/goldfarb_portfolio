@@ -28,17 +28,25 @@ const variants = {
 	},
 };
 
+const closeButtonStyle = {
+	position: "absolute",
+	top: 0,
+	right: 0,
+	margin: "0.75rem",
+	scale: 1.25,
+};
+
 export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
-			<AnimatePresence exitBeforeEnter={true}>
+			<AnimatePresence mode="wait">
 				{open && (
 					<Backdrop onClick={handleClose}>
 						<motion.div
 							className="modal-container"
 							onClick={(e) => e.stopPropagation()}
 						>
-							<CloseButton handleClose={handleClose} style={undefined} />
+							<CloseButton handleClose={handleClose} style={closeButtonStyle} />
 							<div className="modal-content">{content}</div>
 						</motion.div>
 					</Backdrop>
