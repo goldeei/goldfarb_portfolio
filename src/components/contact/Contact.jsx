@@ -1,29 +1,43 @@
 import React, { useState } from "react";
 import Modal from "../modal/Modal";
-import { CloseButton } from "../buttons/Buttons";
-import { BiMessageSquareDetail } from "react-icons/bi";
+import { IoMailOutline } from "react-icons/io5";
 import "./Contact.css";
 import { AnimatePresence, motion } from "framer-motion";
+
+const variants = {
+	hidden: {
+		right: -100,
+	},
+	visible: {
+		right: 0,
+	},
+};
 
 export function Contact() {
 	const [isOpen, setModalOpen] = useState(false);
 	const close = () => setModalOpen(false);
-
 	return (
 		<>
-			{!isOpen && (
-				<AnimatePresence>
+			<AnimatePresence>
+				{!isOpen && (
 					<motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
 						className="contact-icon__wrapper"
+						whileHover={{ scale: 1.07 }}
+						whileTap={{ scale: 1 }}
+						transition={{
+							ease: "easeInOut",
+							duration: 0.15,
+						}}
+						initial="hidden"
+						animate="visible"
+						exit="hidden"
+						variants={variants}
 						onPointerUp={() => setModalOpen(true)}
 					>
-						<BiMessageSquareDetail className="contact-icon" />
+						<IoMailOutline as={motion.svg} className="contact-icon" />
 					</motion.div>
-				</AnimatePresence>
-			)}
+				)}
+			</AnimatePresence>
 			<Modal open={isOpen} handleClose={close} content={undefined} />
 		</>
 	);
