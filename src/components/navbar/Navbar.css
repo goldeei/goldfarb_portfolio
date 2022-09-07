@@ -1,0 +1,29 @@
+$corners: 1rem;
+
+#navbar {
+	position: fixed;
+	width: 100vw;
+}
+
+#navbar-nav {
+	width: auto;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+}
+#navbar-nav li:first-child {
+	border-radius: $corners 0 0 $corners;
+}
+#navbar-nav li:last-child {
+	border-radius: 0 $corners $corners 0;
+}
+
+.navbar-item {
+	font-size: 0.8rem;
+	background-color: white;
+	padding: 0.5rem 1rem;
+}
+.navbar-item a {
+	text-decoration: none;
+}

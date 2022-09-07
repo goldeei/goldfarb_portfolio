@@ -3,13 +3,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
 import { Mesh } from "three";
 
-import Modal from "./components/modal/Modal";
 import Section from "./components/Section";
 import LandingPage from "./components/landing-page/LandingPage";
 import Navbar from "./components/navbar/Navbar";
-import NavButton from "./components/navbar/NavButton";
 import "./App.css";
-import { Contact } from "./components/contact/Contact";
+import Contact from "./components/contact/Contact";
 
 const FillerCube = () => {
 	const ref = useRef();
@@ -58,8 +56,7 @@ function App() {
 			</div> */}
 			<RecoilRoot>
 				<Contact />
-				{/* <Navbar /> */}
-
+				<Navbar />
 				<Section
 					className={"fullscreen"}
 					key={"landing-page"}
