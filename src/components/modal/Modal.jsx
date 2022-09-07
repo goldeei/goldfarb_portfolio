@@ -5,26 +5,11 @@ import { Backdrop } from "./Backdrop";
 import "./modal.css";
 
 const variants = {
-	open: {
-		position: "fixed",
-		top: "25%",
-		left: 0,
-		right: 0,
-		margin: "auto",
-		padding: "1rem",
-		width: "80vw",
-		height: "50%",
-		borderRadius: "0.5rem",
-		backgroundColor: "white",
+	hidden: {
+		top: "-100%",
 	},
-	closed: {
-		backgroundColor: "transparent",
-		position: "initial",
-		top: "initial",
-		left: "initial",
-		right: "initial",
-		width: "initial",
-		margin: "initial",
+	visible: {
+		top: "25%",
 	},
 };
 
@@ -33,17 +18,23 @@ const closeButtonStyle = {
 	top: 0,
 	right: 0,
 	margin: "0.75rem",
-	scale: 1.25,
+	scale: 1.4,
 };
 
 export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
-			<AnimatePresence mode="wait">
+			<AnimatePresence>
 				{open && (
 					<Backdrop onClick={handleClose}>
 						<motion.div
+							key="modal"
 							className="modal-container"
+							initial="hidden"
+							animate="visible"
+							exit="hidden"
+							transition={{ duration: 0.25, ease: "easeInOut" }}
+							variants={variants}
 							onClick={(e) => e.stopPropagation()}
 						>
 							<CloseButton handleClose={handleClose} style={closeButtonStyle} />
