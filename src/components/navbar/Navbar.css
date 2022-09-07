@@ -2,7 +2,7 @@ $corners: 1rem;
 
 #navbar {
 	position: fixed;
-	width: 100vw;
+	width: 100%;
 }
 
 #navbar-nav {
