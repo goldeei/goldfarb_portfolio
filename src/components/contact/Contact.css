@@ -1,12 +1,15 @@
 .contact-icon__wrapper {
 	position: fixed;
 	right: 0;
-	margin: 1rem;
+	margin: 0.5rem;
+	background-color: white;
+	padding: 0.3rem 0.5rem;
+	border-radius: 0.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .contact-icon {
-	scale: 1.75;
-	padding: 0.15rem;
-	border-radius: 0.2rem;
-	background-color: white;
+	scale: 1.65;
 }
