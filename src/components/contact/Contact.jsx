@@ -13,7 +13,7 @@ const variants = {
 	},
 };
 
-export function Contact() {
+export default function Contact() {
 	const [isOpen, setModalOpen] = useState(false);
 	const close = () => setModalOpen(false);
 	return (
