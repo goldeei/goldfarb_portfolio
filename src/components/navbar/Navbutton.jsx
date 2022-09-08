@@ -1,11 +1,12 @@
-function Navbutton({ title }) {
-	const href = `#${title.toLowerCase().replace(" ", "-")}`;
+import { useEffect, useState } from "react";
 
+function Navbutton({ title, href, onClick, children }) {
 	return (
 		<li className="navbar-item">
-			<a key={href} href={href}>
+			<a href={href} onClick={onClick}>
 				{title}
 			</a>
+			{children}
 		</li>
 	);
 }
