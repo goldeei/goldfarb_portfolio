@@ -1,6 +1,6 @@
-import { atom } from "recoil"
+import { atom } from "recoil";
 
 export const activeSectionState = atom({
-    key: 'activeSection',
-    default: 'landing-page'
-})
+	key: "activeSection",
+	default: "about-me",
+});
