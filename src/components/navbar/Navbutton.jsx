@@ -1,13 +1,24 @@
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-function Navbutton({ title, href, onClick, children }) {
+const variants = {
+	initial: { color: "rgb(0,0,0)", scale: 1 },
+	active: { color: "rgb(0,173,204)", scale: 1.1 },
+};
+
+function Navbutton({ title, href, onClick, children, active }) {
 	return (
-		<li className="navbar-item">
-			<a href={href} onClick={onClick}>
+		<motion.li className="navbar-item">
+			<motion.a
+				href={href}
+				onClick={onClick}
+				animate={active ? "active" : "initial"}
+				transition={{ duration: 0.25, ease: "easeOut" }}
+				variants={variants}
+			>
 				{title}
-			</a>
+			</motion.a>
 			{children}
-		</li>
+		</motion.li>
 	);
 }
 
