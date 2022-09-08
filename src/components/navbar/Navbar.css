@@ -5,10 +5,11 @@ $corners: 1rem;
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	z-index: 999;
 }
 
 #navbar-nav {
-	width: 80%;
+	width: clamp(500px, 80%, 900px);
 	padding: 0;
 	list-style-type: none;
 	display: flex;
@@ -24,7 +25,6 @@ $corners: 1rem;
 
 .navbar-item {
 	position: relative;
-	font-size: 0.8rem;
 	background-color: white;
 	padding: 0.5rem 1rem;
 	flex: 1;
@@ -33,5 +33,7 @@ $corners: 1rem;
 }
 
 .navbar-item a {
+	font-size: clamp(0.6rem, 2vw, 0.8rem);
 	text-decoration: none;
+	color: rgb(0, 0, 0);
 }

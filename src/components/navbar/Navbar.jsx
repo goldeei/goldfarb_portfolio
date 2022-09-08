@@ -12,11 +12,12 @@ const underline = {
 	position: "absolute",
 	bottom: 3,
 	width: "60%",
-	height: "0.3rem",
-	background: "black",
+	height: "clamp(0.2rem, 0.5vw, 0.3rem)",
+	background: "#04d9ff",
 	borderRadius: "8px",
 	zIndex: 1000,
 };
+
 function Navbar() {
 	const [active, setActive] = useRecoilState(activeSectionState);
 	return (
@@ -29,6 +30,7 @@ function Navbar() {
 							href={`#${kebab(link)}`}
 							title={link}
 							onClick={() => setActive(kebab(link))}
+							active={active === kebab(link)}
 						>
 							{active === kebab(link) ? (
 								<motion.div
