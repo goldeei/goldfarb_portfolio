@@ -7,4 +7,3 @@ export const activeSectionState = atom({
 	key: "activeSection",
 	default: activeDefault(),
 });
-console.log(location.hash);
