@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
-import { Mesh } from "three";
+import { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 
+import * as Layout from "./components/styling/Layout";
+import { Theme } from "./components/styling/Theme";
 import AboutMe from "./components/about-me/AboutMe";
-import Section from "./components/Section";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
 import Contact from "./components/contact/Contact";
@@ -21,6 +23,13 @@ const FillerCube = () => {
 		</mesh>
 	);
 };
+
+const Content = styled.div`
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	${Layout.defMax};
+`;
 
 function App() {
 	let resizeTimer;
@@ -45,7 +54,7 @@ function App() {
 	});
 
 	return (
-		<>
+		<ThemeProvider theme={Theme.light}>
 			<div id="r3f-container">
 				<Canvas>
 					<ambientLight intensity={0.1} />
@@ -54,22 +63,24 @@ function App() {
 				</Canvas>
 			</div>
 			<RecoilRoot>
-				<Contact />
-				<Navbar />
-				<section id="about-me">
-					<AboutMe className={"vertical-center"} />
-				</section>
-				<section id="web-dev">
-					<p className="vertical-center">Web Dev</p>
-				</section>
-				<section id="data-analytics">
-					<p className="vertical-center">Data Analytics</p>
-				</section>
-				<section id="design">
-					<p className="vertical-center">Design</p>
-				</section>
+				<Content>
+					<Contact />
+					<Navbar />
+					<section id="about-me">
+						<AboutMe className={"vertical-center"} />
+					</section>
+					<section id="web-dev">
+						<p className="vertical-center">Web Dev</p>
+					</section>
+					<section id="data-analytics">
+						<p className="vertical-center">Data Analytics</p>
+					</section>
+					<section id="design">
+						<p className="vertical-center">Design</p>
+					</section>
+				</Content>
 			</RecoilRoot>
-		</>
+		</ThemeProvider>
 	);
 }
 
