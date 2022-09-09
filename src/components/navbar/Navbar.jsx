@@ -1,29 +1,19 @@
 import { useRecoilState } from "recoil";
-import { LayoutGroup, motion } from "framer-motion";
+import { LayoutGroup } from "framer-motion";
 
+import { Nav, NavbarNav, Underline } from "./Styled";
 import Navbutton from "./Navbutton";
-import "./Navbar.css";
 import { activeSectionState } from "../../Atoms";
 
 const links = ["About Me", "Web Dev", "Data Analytics", "Design"];
 const kebab = (text) => `${text.toLowerCase().replace(" ", "-")}`;
 
-const underline = {
-	position: "absolute",
-	bottom: 3,
-	width: "60%",
-	height: "clamp(0.2rem, 0.5vw, 0.3rem)",
-	background: "#04d9ff",
-	borderRadius: "8px",
-	zIndex: 1000,
-};
-
 function Navbar() {
 	const [active, setActive] = useRecoilState(activeSectionState);
 	return (
-		<nav id="navbar">
+		<Nav id="navbar">
 			<LayoutGroup id="navbar-indicator">
-				<ul id="navbar-nav">
+				<NavbarNav id="navbar-nav">
 					{links.map((link) => (
 						<Navbutton
 							key={kebab(link)}
@@ -33,17 +23,16 @@ function Navbar() {
 							active={active === kebab(link)}
 						>
 							{active === kebab(link) ? (
-								<motion.div
-									style={underline}
+								<Underline
 									transition={{ layout: { duration: 0.25, ease: "easeOut" } }}
 									layoutId="underline"
 								/>
 							) : null}
 						</Navbutton>
 					))}
-				</ul>
+				</NavbarNav>
 			</LayoutGroup>
-		</nav>
+		</Nav>
 	);
 }
 

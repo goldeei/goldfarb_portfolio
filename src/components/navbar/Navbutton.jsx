@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { NavbarItem } from "./Styled";
 
 const variants = {
 	initial: { color: "rgb(0,0,0)", scale: 1 },
@@ -7,7 +8,7 @@ const variants = {
 
 function Navbutton({ title, href, onClick, children, active }) {
 	return (
-		<motion.li className="navbar-item">
+		<NavbarItem href={href}>
 			<motion.a
 				href={href}
 				onClick={onClick}
@@ -18,7 +19,7 @@ function Navbutton({ title, href, onClick, children, active }) {
 				{title}
 			</motion.a>
 			{children}
-		</motion.li>
+		</NavbarItem>
 	);
 }
 
