@@ -9,18 +9,32 @@
 	color: black;
 	background-color: lightblue;
 	color-scheme: light dark;
-
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
+
+	scroll-behavior: smooth;
+
+	/* Z-Index */
+	--background: -1;
+	--content: 1;
+	--control: 2;
+	--overlay: 3;
+}
+
+#r3f-container {
+	z-index: var(--background);
+	position: fixed;
+	height: 100%;
+	width: 100%;
 }
 
 @define-mixin fillScreen {
 	margin: 0;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 }
 
 html,
@@ -33,18 +47,19 @@ body,
 	@mixin fillScreen;
 }
 
-.center-children {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+body {
+	margin: 0 auto;
+	max-width: 1200px;
 }
 
-#r3f-container {
-	z-index: -1000;
-	position: fixed;
-	height: 100%;
-	width: 100%;
+section {
+	position: relative;
+	display: flex;
+	@mixin fillScreen;
+}
+
+section > .vertical-center {
+	align-self: center;
 }
 
 .title {

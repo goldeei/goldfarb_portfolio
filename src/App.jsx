@@ -3,8 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
 import { Mesh } from "three";
 
+import AboutMe from "./components/about-me/AboutMe";
 import Section from "./components/Section";
-import LandingPage from "./components/landing-page/LandingPage";
 import Navbar from "./components/navbar/Navbar";
 import "./App.css";
 import Contact from "./components/contact/Contact";
@@ -46,32 +46,28 @@ function App() {
 
 	return (
 		<>
-			{/* <div id="r3f-container">
+			<div id="r3f-container">
 				<Canvas>
-					<color attach="background" args={["white"]} />
 					<ambientLight intensity={0.1} />
 					<directionalLight color="red" position={[10, 0, 15]} />
 					<FillerCube />
 				</Canvas>
-			</div> */}
+			</div>
 			<RecoilRoot>
 				<Contact />
 				<Navbar />
-				<Section
-					className={"fullscreen"}
-					key={"landing-page"}
-					name={"landing-page"}
-				>
-					<LandingPage />
-				</Section>
-
-				<Section
-					className={"fullscreen center-children"}
-					key={"about-me"}
-					name={"about-me"}
-				>
-					<p>ABOUT ME</p>
-				</Section>
+				<section id="about-me">
+					<AboutMe className={"vertical-center"} />
+				</section>
+				<section id="web-dev">
+					<p className="vertical-center">Web Dev</p>
+				</section>
+				<section id="data-analytics">
+					<p className="vertical-center">Data Analytics</p>
+				</section>
+				<section id="design">
+					<p className="vertical-center">Design</p>
+				</section>
 			</RecoilRoot>
 		</>
 	);
