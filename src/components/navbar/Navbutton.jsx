@@ -1,20 +1,18 @@
 import { motion } from "framer-motion";
 import { NavbarItem } from "./Styled";
-
-const variants = {
-	initial: { color: "rgb(0,0,0)", scale: 1 },
-	active: { color: "rgb(0,173,204)", scale: 1.1 },
-};
+import { useTheme } from "styled-components";
 
 function Navbutton({ title, href, onClick, children, active }) {
+	const theme = useTheme();
+	const initial = { scale: 1, color: theme.colors.mainText };
+	const highlight = { scale: 1.1, color: theme.colors.blueHighlight };
 	return (
 		<NavbarItem href={href}>
 			<motion.a
 				href={href}
 				onClick={onClick}
-				animate={active ? "active" : "initial"}
+				animate={active ? highlight : initial}
 				transition={{ duration: 0.25, ease: "easeOut" }}
-				variants={variants}
 			>
 				{title}
 			</motion.a>
