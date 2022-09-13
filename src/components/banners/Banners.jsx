@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
-import { motion } from "framer-motion";
 
+/**
+ * Creates and styles text tags as banners and wraps them in a parent
+ * @param children
+ * @returns Styled text banners
+ */
 function Banners({ children }) {
 	return <Wrapper>{children}</Wrapper>;
 }
