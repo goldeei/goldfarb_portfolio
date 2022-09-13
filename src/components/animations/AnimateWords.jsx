@@ -9,8 +9,8 @@ import React from "react";
  * @returns individual spans containing the characters of the provided text
  */
 export const AnimateWords = ({ text, variant }) => {
-	if (!text) return console.error("No text provided");
-	if (!variant) return console.error("No variant provided");
+	if (!text) return console.error("Missing text property");
+	if (!variant) return console.error("Missing variant property");
 	return text.split("").map((char, index) => {
 		return (
 			<motion.span variants={variant} key={char + "-" + index}>
