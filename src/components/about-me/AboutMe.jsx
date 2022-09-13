@@ -3,7 +3,6 @@ import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 
 import { AnimateWords } from "../animations/AnimateWords";
 import { randBetween } from "../Utilities";
-import "./AboutMe.css";
 import Banners from "../banners/Banners";
 
 const title = "Hi I'm Jake Goldfarb";
