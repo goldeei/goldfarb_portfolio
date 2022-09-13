@@ -32,42 +32,40 @@ function AboutMe() {
 	const [sub, showSubtitle] = useState(false);
 	const [main, showMain] = useState(false);
 	return (
-		<motion.div className="vertical-center">
-			<Banners>
-				<LayoutGroup>
-					<motion.h1
+		<Banners>
+			<LayoutGroup>
+				<motion.h1
+					layout
+					initial="hidden"
+					animate="visible"
+					variants={sentence}
+					onAnimationComplete={() => showSubtitle(true)}
+				>
+					<AnimateWords text={title} variant={letter} />
+				</motion.h1>
+				{sub && (
+					<motion.h4
 						layout
 						initial="hidden"
 						animate="visible"
 						variants={sentence}
-						onAnimationComplete={() => showSubtitle(true)}
+						onAnimationComplete={() => showMain(true)}
 					>
-						<AnimateWords text={title} variant={letter} />
-					</motion.h1>
-					{sub && (
-						<motion.h4
-							layout
-							initial="hidden"
-							animate="visible"
-							variants={sentence}
-							onAnimationComplete={() => showMain(true)}
-						>
-							<AnimateWords text={subtitle} variant={letter} />
-						</motion.h4>
-					)}
-					{main && (
-						<motion.p
-							layout
-							initial={{ opacity: 0, scale: 1.15 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ delay: 0.25, duration: 0.65 }}
-						>
-							{body}
-						</motion.p>
-					)}
-				</LayoutGroup>
-			</Banners>
-		</motion.div>
+						<AnimateWords text={subtitle} variant={letter} />
+					</motion.h4>
+				)}
+				{main && (
+					<motion.p
+						layout
+						initial={{ opacity: 0, scale: 1.15 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ delay: 0.25, duration: 0.65 }}
+					>
+						{body}
+					</motion.p>
+				)}
+			</LayoutGroup>
+		</Banners>
 	);
 }
 
