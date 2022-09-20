@@ -12,8 +12,8 @@ function Navbar() {
 	const [active, setActive] = useRecoilState(activeSectionState);
 	return (
 		<Nav id="navbar">
-			<LayoutGroup id="navbar-indicator">
-				<NavbarNav id="navbar-nav">
+			<NavbarNav id="navbar-nav">
+				<LayoutGroup id="navbar-indicator">
 					{links.map((link) => (
 						<Navbutton
 							key={kebab(link)}
@@ -30,8 +30,8 @@ function Navbar() {
 							) : null}
 						</Navbutton>
 					))}
-				</NavbarNav>
-			</LayoutGroup>
+				</LayoutGroup>
+			</NavbarNav>
 		</Nav>
 	);
 }
