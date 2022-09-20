@@ -14,7 +14,6 @@ import textToSpans from "./textToSpans";
 export const AnimateWords = ({ ...props }) => {
 	const { text, variant, highlightText, highlightClass } = { ...props };
 	const spans = textToSpans(text, highlightText);
-	console.table(spans);
 	return spans.map((span, i) => {
 		return (
 			<motion.span
