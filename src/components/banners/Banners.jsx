@@ -21,12 +21,12 @@ const defaults = css`
 
 const Wrapper = styled.div`
 	margin: 0 0.15rem;
+	padding: 0;
 	max-width: max(600px, 50%);
 	> * {
 		${defaults}
 	}
 	h1 {
-		display: inline-block;
 		position: relative;
 		margin-top: 0;
 		color: ${(props) => props.theme.colors.mainText};
@@ -37,5 +37,9 @@ const Wrapper = styled.div`
 	}
 	p {
 		margin: 0.6rem 0 0 0;
+	}
+	span.highlight {
+		color: ${(props) => props.theme.colors.blueHighlight};
+		font-weight: bolder;
 	}
 `;

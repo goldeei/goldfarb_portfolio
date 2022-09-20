@@ -1,21 +1,18 @@
 import { useState } from "react";
-import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+import { motion, LayoutGroup } from "framer-motion";
 
-import { AnimateWords } from "../animations/AnimateWords";
+import { title, subtitle, body, highlighted } from "./Content";
+import { AnimateWords } from "../animations/animate-words/AnimateWords";
 import { randBetween } from "../Utilities";
 import Banners from "../banners/Banners";
 
-const title = "Hi I'm Jake Goldfarb";
-const subtitle = "I'm a UI Designer, Frontend Developer, and Data Analyst";
-const body =
-	"I enjoy using creative approaches to creating web apps and data visualizations that make them enjoyable, approachable, and accessible using modern Javascript frameworks and libraries.";
-
 const sentence = {
-	hidden: { opacity: 1 },
+	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
 		transition: {
-			staggerChildren: randBetween(0.06, 0.075),
+			staggerChildren: randBetween(0.06, 0.09),
+			duration: 1,
 		},
 	},
 };
@@ -41,7 +38,11 @@ function AboutMe() {
 					variants={sentence}
 					onAnimationComplete={() => showSubtitle(true)}
 				>
-					<AnimateWords text={title} variant={letter} />
+					<AnimateWords
+						highlightClass="highlight"
+						text={title}
+						variant={letter}
+					/>
 				</motion.h1>
 				{sub && (
 					<motion.h4
@@ -51,13 +52,18 @@ function AboutMe() {
 						variants={sentence}
 						onAnimationComplete={() => showMain(true)}
 					>
-						<AnimateWords text={subtitle} variant={letter} />
+						<AnimateWords
+							highlightText={highlighted}
+							highlightClass="highlight"
+							text={subtitle}
+							variant={letter}
+						/>
 					</motion.h4>
 				)}
 				{main && (
 					<motion.p
 						layout
-						initial={{ opacity: 0, scale: 1.15 }}
+						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.25, duration: 0.65 }}
 					>
