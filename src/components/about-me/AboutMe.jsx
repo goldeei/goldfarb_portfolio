@@ -39,6 +39,7 @@ function AboutMe() {
 					onAnimationComplete={() => showSubtitle(true)}
 				>
 					<AnimateWords
+						highlightText={highlighted}
 						highlightClass="highlight"
 						text={title}
 						variant={letter}
