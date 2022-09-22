@@ -3,10 +3,14 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
 
+import AtomDebugObserver from "./AtomDebugObserver";
 import * as Layout from "./components/styling/Layout";
 import { GlobalStyle } from "./components/styling/GlobalStyle";
 import { Theme } from "./components/styling/Theme";
+import { activeSectionState } from "./Atoms";
+import Section from "./components/section/Section";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./components/contact/Contact";
 import AboutMe from "./components/about-me/AboutMe";
@@ -36,26 +40,6 @@ const Content = styled.div`
 
 function App() {
 	const [isDark, setDark] = useState(false);
-	let resizeTimer;
-	//Stop animations on resize for width transitions
-	// useEffect(() => {
-	// 	window.addEventListener("resize", () => {
-	// 		document.body.classList.add("halt-animation");
-	// 		clearTimeout(resizeTimer);
-	// 		resizeTimer = setTimeout(() => {
-	// 			document.body.classList.remove("halt-animation");
-	// 		}, 400);
-	// 		return () => {
-	// 			window.removeEventListener("resize", () => {
-	// 				document.body.classList.add("halt-animation");
-	// 				clearTimeout(resizeTimer);
-	// 				resizeTimer = setTimeout(() => {
-	// 					document.body.classList.remove("halt-animation");
-	// 				}, 400);
-	// 			});
-	// 		};
-	// 	});
-	// });
 
 	return (
 		<ThemeProvider theme={isDark ? Theme.dark : Theme.light}>
@@ -67,22 +51,23 @@ function App() {
 				</Canvas>
 			</div> */}
 			<RecoilRoot>
+				{/* <AtomDebugObserver /> */}
 				<Content>
 					<GlobalStyle />
 					<Contact />
 					<Navbar />
-					<section id="about-me" className="vertical-center">
+					<Section id="about-me" className="vertical-center">
 						<AboutMe />
-					</section>
-					<section id="web-dev" className="vertical-center">
+					</Section>
+					<Section id="web-dev" className="vertical-center">
 						<WebDev />
-					</section>
-					<section id="data-analytics">
+					</Section>
+					<Section id="data-analytics">
 						<p className="vertical-center">Data Analytics</p>
-					</section>
-					<section id="design">
+					</Section>
+					<Section id="design">
 						<p className="vertical-center">Design</p>
-					</section>
+					</Section>
 				</Content>
 			</RecoilRoot>
 		</ThemeProvider>
