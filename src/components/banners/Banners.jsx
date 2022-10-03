@@ -20,9 +20,8 @@ const defaults = css`
 `;
 
 const Wrapper = styled.div`
-	margin: 0 0.15rem;
 	padding: 0;
-	max-width: max(600px, 50%);
+	max-width: max(630px, 50%);
 	> * {
 		${defaults}
 	}
