@@ -8,7 +8,7 @@ import { useRecoilState } from "recoil";
 import AtomDebugObserver from "./AtomDebugObserver";
 import * as Layout from "./components/styling/Layout";
 import { GlobalStyle } from "./components/styling/GlobalStyle";
-import { Theme } from "./components/styling/Theme";
+import { base, light, dark } from "./components/styling/Themes";
 import { activeSectionState } from "./Atoms";
 import Section from "./components/section/Section";
 import Navbar from "./components/navbar/Navbar";
@@ -16,6 +16,7 @@ import Contact from "./components/contact/Contact";
 import AboutMe from "./components/about-me/AboutMe";
 import WebDev from "./components/web-dev/WebDev";
 import "./App.css";
+import { createContext } from "react";
 
 const FillerCube = () => {
 	const ref = useRef();
@@ -38,39 +39,56 @@ const Content = styled.div`
 	max-width: ${Layout.defMax};
 `;
 
+const themesMap = {
+	light,
+	dark,
+};
+export const ThemePreferenceContext = createContext();
 function App() {
 	const [isDark, setDark] = useState(false);
-
+	const [currentTheme, setCurrentTheme] = useState("light");
+	const theme = { ...base, colors: themesMap[currentTheme] };
+	useEffect(() => {
+		isDark ? setCurrentTheme("dark") : setCurrentTheme("light");
+	}, [isDark]);
 	return (
-		<ThemeProvider theme={isDark ? Theme.dark : Theme.light}>
-			{/* <div id="r3f-container">
-				<Canvas>
-					<ambientLight intensity={0.1} />
-					<directionalLight color="red" position={[10, 0, 15]} />
-					<FillerCube />
-				</Canvas>
-			</div> */}
-			<RecoilRoot>
-				{/* <AtomDebugObserver /> */}
-				<Content>
-					<GlobalStyle />
-					<Contact />
-					<Navbar />
-					<Section id="about-me" className="vertical-center">
-						<AboutMe />
-					</Section>
-					<Section id="web-dev" className="vertical-center">
-						<WebDev />
-					</Section>
-					<Section id="data-analytics">
-						<p className="vertical-center">Data Analytics</p>
-					</Section>
-					<Section id="design">
-						<p className="vertical-center">Design</p>
-					</Section>
-				</Content>
-			</RecoilRoot>
-		</ThemeProvider>
+		<ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
+			<ThemeProvider theme={theme}>
+				{/* <div id="r3f-container">
+					<Canvas>
+						<ambientLight intensity={0.1} />
+						<directionalLight color="red" position={[10, 0, 15]} />
+						<FillerCube />
+					</Canvas>
+				</div> */}
+				<RecoilRoot>
+					{/* <AtomDebugObserver /> */}
+					<Content>
+						<GlobalStyle />
+						<Contact />
+						<button
+							style={{ position: "absolute", top: "20%", zIndex: 1000 }}
+							onClick={() => setDark(!isDark)}
+						>
+							Change Theme
+						</button>
+						<Navbar />
+						<Section id="about-me" className="vertical-center">
+							<AboutMe />
+						</Section>
+						<Section id="web-dev" className="vertical-center">
+							<WebDev />
+						</Section>
+						<Section id="data-analytics">
+							<p className="vertical-center">Data Analytics</p>
+						</Section>
+						<Section id="design">
+							<p className="vertical-center">Design</p>
+						</Section>
+					</Content>
+				</RecoilRoot>
+			</ThemeProvider>
+		</ThemePreferenceContext.Provider>
 	);
 }
 
