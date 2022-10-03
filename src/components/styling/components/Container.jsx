@@ -9,11 +9,13 @@ const Container = styled.div.attrs((props) => ({
 		const colors = props.theme.colors;
 		return css`
 			background-color: ${colors.primary};
+			box-shadow: ${props.theme.containerDropShadow};
 			> h1 {
 				color: ${colors.mainText};
 			}
 		`;
 	}}
+	//Todo fullscreen broke
 	${({ fullscreen }) => {
 		if (fullscreen) {
 			return css`
@@ -35,7 +37,6 @@ const Container = styled.div.attrs((props) => ({
 	}
 
 	position: relative;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 	display: flex;
 	flex-direction: column;
 	align-self: center;

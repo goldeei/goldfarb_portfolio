@@ -28,7 +28,7 @@ export const Icon = styled.div`
 	svg {
 		padding: 0 0.1rem;
 		border-radius: 0.2rem;
-		background-color: white;
+		background-color: ${(props) => props.theme.colors.primary};
 		scale: 1.65;
 	}
 `;

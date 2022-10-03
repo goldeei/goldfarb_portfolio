@@ -15,7 +15,7 @@ const defaults = css`
 	padding: 0.75rem;
 	width: fit-content;
 	background-color: ${(props) => props.theme.colors.primary};
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+	box-shadow: ${(props) => props.theme.containerDropShadow};
 	margin-bottom: 0.2rem;
 `;
 
@@ -28,11 +28,9 @@ const Wrapper = styled.div`
 	h1 {
 		position: relative;
 		margin-top: 0;
-		color: ${(props) => props.theme.colors.mainText};
 	}
 	h4 {
 		margin-top: 0;
-		color: ${(props) => props.theme.colors.subText};
 	}
 	p {
 		margin: 0.6rem 0 0 0;
