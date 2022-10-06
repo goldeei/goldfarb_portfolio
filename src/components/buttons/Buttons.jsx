@@ -15,11 +15,9 @@ export const CloseButton = ({ style, handleClose }) => {
 		<motion.button
 			onClick={handleClose}
 			// var --scale allows for scale to be set by parent while still animating for reusability
-			initial={{ color: theme.colors.mainText }}
 			whileTap={{ scale: 0.9 }}
 			whileHover={{
 				scale: 1.1,
-				color: "rgb(255,0,0)",
 			}}
 			transition={{
 				duration: 0.05,

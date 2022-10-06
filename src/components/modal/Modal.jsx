@@ -13,14 +13,6 @@ const variants = {
 	},
 };
 
-const closeButtonStyle = {
-	position: "absolute",
-	top: 0,
-	right: 0,
-	margin: "0.75rem",
-	scale: 1.4,
-};
-
 export default function Modal({ content, open, handleClose }) {
 	return (
 		<>
@@ -69,6 +61,12 @@ const CloseButtonWrapper = styled.div`
 	right: 0;
 	top: 0;
 	margin: 0.25rem;
+	> button {
+		color: ${(props) => props.theme.colors.mainText};
+	}
+	> button:hover {
+		color: ${(props) => props.theme.warning};
+	}
 	svg {
 		scale: 1.5;
 	}
