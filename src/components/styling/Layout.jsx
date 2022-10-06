@@ -18,5 +18,6 @@ export const zIndex = (level) => {
 	if (level === "control") return "2";
 	if (level === "navbar") return "3";
 	if (level === "overlay") return "4";
+	if (level === "site-controls") return "5";
 	return "0";
 };
