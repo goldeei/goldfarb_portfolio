@@ -1,9 +1,7 @@
-import React, { CSSProperties, useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { CloseButton } from "../buttons/Buttons";
 import { Backdrop } from "./Backdrop";
-import "./modal.css";
 
 //Todo transfer to styled, refactor
 const variants = {
@@ -31,7 +29,6 @@ export default function Modal({ content, open, handleClose }) {
 					<Backdrop onClick={handleClose}>
 						<StyledModal
 							key="modal"
-							className="modal-container"
 							initial="hidden"
 							animate="visible"
 							exit="hidden"
@@ -39,8 +36,10 @@ export default function Modal({ content, open, handleClose }) {
 							variants={variants}
 							onClick={(e) => e.stopPropagation()}
 						>
-							<CloseButton handleClose={handleClose} style={closeButtonStyle} />
-							<div>{content}</div>
+							<CloseButtonWrapper>
+								<CloseButton handleClose={handleClose} />
+							</CloseButtonWrapper>
+							<ModalContent>{content}</ModalContent>
 						</StyledModal>
 					</Backdrop>
 				)}
@@ -58,8 +57,19 @@ const StyledModal = styled(motion.div)`
 	background-color: ${(props) => props.theme.colors.primary};
 	color: ${(props) => props.theme.colors.mainText};
 	box-shadow: ${(props) => props.theme.containerDropShadow};
-	> div {
-		width: 100%;
-		height: 100%;
+`;
+
+const ModalContent = styled.div`
+	width: 100%;
+	height: 100%;
+`;
+
+const CloseButtonWrapper = styled.div`
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 0.25rem;
+	svg {
+		scale: 1.5;
 	}
 `;

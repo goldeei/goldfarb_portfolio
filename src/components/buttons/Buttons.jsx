@@ -3,25 +3,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoClose, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { TbArrowsMaximize, TbArrowsMinimize } from "react-icons/tb";
 
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 import "./Buttons.css";
 
 // Returns a close button that animates red on hover, scale on click
 // handleClose set by parent to close element
 export const CloseButton = ({ style, handleClose }) => {
+	const theme = useTheme();
 	return (
 		<motion.button
-			style={style}
 			onClick={handleClose}
 			// var --scale allows for scale to be set by parent while still animating for reusability
-			initial={{ "--scale": style.scale }}
-			whileTap={{ "--scale": style.scale * 0.8 }}
+			initial={{ color: theme.colors.mainText }}
+			whileTap={{ scale: 0.9 }}
 			whileHover={{
+				scale: 1.1,
 				color: "rgb(255,0,0)",
 			}}
 			transition={{
-				duration: 0.2,
+				duration: 0.05,
 				ease: "easeInOut",
 			}}
 		>
@@ -99,12 +100,9 @@ const StyledButtonBase = styled(motion.button)`
 
 export const ThemeSwitcher = ({ ...props }) => {
 	const { onClick, isDark } = { ...props };
-	console.log(isDark);
 	return (
 		<ButtonBase onClick={onClick}>
-			<AnimatePresence mode="wait">
-				{isDark ? <IoSunnyOutline /> : <IoMoonOutline />}
-			</AnimatePresence>
+			{isDark ? <IoSunnyOutline /> : <IoMoonOutline />}
 		</ButtonBase>
 	);
 };
