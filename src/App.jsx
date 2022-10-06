@@ -9,7 +9,9 @@ import AtomDebugObserver from "./AtomDebugObserver";
 import * as Layout from "./components/styling/Layout";
 import { GlobalStyle } from "./components/styling/GlobalStyle";
 import { base, light, dark } from "./components/styling/Themes";
+import { ThemeSwitcher } from "./components/buttons/Buttons";
 import { activeSectionState } from "./Atoms";
+import Controls from "./components/controls/Controls";
 import Section from "./components/section/Section";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./components/contact/Contact";
@@ -48,6 +50,9 @@ function App() {
 	const [isDark, setDark] = useState(false);
 	const [currentTheme, setCurrentTheme] = useState("light");
 	const theme = { ...base, colors: themesMap[currentTheme] };
+	const changeTheme = () => {
+		setDark(!isDark);
+	};
 	useEffect(() => {
 		isDark ? setCurrentTheme("dark") : setCurrentTheme("light");
 	}, [isDark]);
@@ -65,13 +70,6 @@ function App() {
 					{/* <AtomDebugObserver /> */}
 					<Content>
 						<GlobalStyle />
-						<Contact />
-						<button
-							style={{ position: "absolute", top: "20%", zIndex: 1000 }}
-							onClick={() => setDark(!isDark)}
-						>
-							Change Theme
-						</button>
 						<Navbar />
 						<Section id="about-me" className="vertical-center">
 							<AboutMe />
@@ -85,6 +83,10 @@ function App() {
 						<Section id="design">
 							<p className="vertical-center">Design</p>
 						</Section>
+						<Controls>
+							<Contact />
+							<ThemeSwitcher onClick={() => changeTheme()} />
+						</Controls>
 					</Content>
 				</RecoilRoot>
 			</ThemeProvider>
