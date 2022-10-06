@@ -51,13 +51,12 @@ const Indicator = styled.div`
 	position: absolute;
 	top: -1rem;
 	left: 0;
-	border-radius: 0rem;
+	border-radius: 0.25rem;
 	overflow: hidden;
 	& .active {
 		border-radius: inherit;
 		width: 100%;
 		height: 100%;
-
 		background-color: blue;
 	}
 `;
@@ -176,7 +175,7 @@ const NavContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-	background-color: skyblue;
+	background-color: ${(props) => props.theme.colors.background};
 	flex: 1;
 	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 	overflow: hidden;
