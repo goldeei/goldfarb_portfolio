@@ -1,4 +1,5 @@
 import React, { CSSProperties, useEffect, useState } from "react";
+import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { CloseButton } from "../buttons/Buttons";
 import { Backdrop } from "./Backdrop";
@@ -28,7 +29,7 @@ export default function Modal({ content, open, handleClose }) {
 			<AnimatePresence>
 				{open && (
 					<Backdrop onClick={handleClose}>
-						<motion.div
+						<StyledModal
 							key="modal"
 							className="modal-container"
 							initial="hidden"
@@ -39,11 +40,26 @@ export default function Modal({ content, open, handleClose }) {
 							onClick={(e) => e.stopPropagation()}
 						>
 							<CloseButton handleClose={handleClose} style={closeButtonStyle} />
-							<div className="modal-content">{content}</div>
-						</motion.div>
+							<div>{content}</div>
+						</StyledModal>
 					</Backdrop>
 				)}
 			</AnimatePresence>
 		</>
 	);
 }
+
+const StyledModal = styled(motion.div)`
+	position: fixed;
+	width: 80%;
+	height: 80%;
+	max-width: 500px;
+	max-height: 500px;
+	background-color: ${(props) => props.theme.colors.primary};
+	color: ${(props) => props.theme.colors.mainText};
+	box-shadow: ${(props) => props.theme.containerDropShadow};
+	> div {
+		width: 100%;
+		height: 100%;
+	}
+`;

@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import styled from "styled-components";
+
+import * as layout from "../styling/Layout";
 
 const variants = {
 	visible: {
@@ -11,8 +14,7 @@ const variants = {
 
 export const Backdrop = ({ children, onClick }) => {
 	return (
-		<motion.div
-			className="modal-backdrop"
+		<StyledBackdrop
 			initial="hidden"
 			animate="visible"
 			exit="hidden"
@@ -23,6 +25,19 @@ export const Backdrop = ({ children, onClick }) => {
 			onClick={onClick}
 		>
 			{children}
-		</motion.div>
+		</StyledBackdrop>
 	);
 };
+
+const StyledBackdrop = styled(motion.div)`
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: ${layout.zIndex("overlay")};
+`;
