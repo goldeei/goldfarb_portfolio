@@ -9,6 +9,5 @@ export function useLocalState(defaultValue, key) {
 	useEffect(() => {
 		window.localStorage.setItem(key, value);
 	}, [key, value]);
-	//console.log(value);
 	return [value, setValue];
 }
