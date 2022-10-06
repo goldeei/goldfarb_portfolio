@@ -107,22 +107,9 @@ function ProjectContainer({ ...props }) {
 	const paginate = (newDir) => {
 		setItem([item + newDir, newDir]);
 	};
-	useEffect(() => {
-		if (fullscreen)
-			document.getElementById(ref.current.parentNode.id).scrollIntoView();
-	}, [fullscreen]);
-	useEffect(() => {
-		if (activeSection !== ref.current.parentNode.id) {
-			setFullscreen(false);
-		}
-	}, [activeSection]);
 	return (
 		<Container ref={ref}>
 			<h1>{title}</h1>
-			<FSButton
-				onClick={() => setFullscreen(!fullscreen)}
-				fullscreen={fullscreen}
-			/>
 			<Controls>
 				<button className="next" onClick={() => paginate(1)}>
 					<IoCaretBackOutline />
