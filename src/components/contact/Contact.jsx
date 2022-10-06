@@ -10,7 +10,7 @@ export default function Contact() {
 	const close = () => setModalOpen(false);
 	return (
 		<>
-			<ButtonBase onClick={() => setModalOpen(true)}>
+			<ButtonBase onClick={() => setModalOpen(!isOpen)}>
 				<IoMailOutline as={motion.svg} />
 			</ButtonBase>
 			<Modal open={isOpen} handleClose={close} content={undefined} />
