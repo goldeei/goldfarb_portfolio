@@ -1,16 +1,15 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, createContext } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
 
 import AtomDebugObserver from "./AtomDebugObserver";
 import * as Layout from "./components/styling/Layout";
 import { GlobalStyle } from "./components/styling/GlobalStyle";
 import { base, light, dark } from "./components/styling/Themes";
 import { ThemeSwitcher } from "./components/buttons/Buttons";
-import { activeSectionState } from "./Atoms";
+import { useLocalState } from "./hooks/useLocalState";
 import Controls from "./components/controls/Controls";
 import Section from "./components/section/Section";
 import Navbar from "./components/navbar/Navbar";
@@ -18,7 +17,6 @@ import Contact from "./components/contact/Contact";
 import AboutMe from "./components/about-me/AboutMe";
 import WebDev from "./components/web-dev/WebDev";
 import "./App.css";
-import { createContext } from "react";
 
 const FillerCube = () => {
 	const ref = useRef();
@@ -45,14 +43,15 @@ const themesMap = {
 	light,
 	dark,
 };
+
 export const ThemePreferenceContext = createContext();
 function App() {
-	const [isDark, setDark] = useState(false);
+	//Possible themes
 	const [currentTheme, setCurrentTheme] = useState("light");
 	const theme = { ...base, colors: themesMap[currentTheme] };
-	const changeTheme = () => {
-		setDark(!isDark);
-	};
+
+	//Get/Set theme from local storage
+	const [isDark, setDark] = useLocalState(false, "darkMode");
 	useEffect(() => {
 		isDark ? setCurrentTheme("dark") : setCurrentTheme("light");
 	}, [isDark]);
@@ -85,7 +84,7 @@ function App() {
 						</Section>
 						<Controls>
 							<Contact />
-							<ThemeSwitcher onClick={() => changeTheme()} />
+							<ThemeSwitcher onClick={() => setDark(!isDark)} />
 						</Controls>
 					</Content>
 				</RecoilRoot>
