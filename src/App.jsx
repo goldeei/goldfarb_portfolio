@@ -84,7 +84,7 @@ function App() {
 						</Section>
 						<Controls>
 							<Contact />
-							<ThemeSwitcher onClick={() => setDark(!isDark)} />
+							<ThemeSwitcher onClick={() => setDark(!isDark)} isDark={isDark} />
 						</Controls>
 					</Content>
 				</RecoilRoot>

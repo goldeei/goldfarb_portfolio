@@ -98,10 +98,13 @@ const StyledButtonBase = styled(motion.button)`
 `;
 
 export const ThemeSwitcher = ({ ...props }) => {
-	const { onClick } = { ...props };
+	const { onClick, isDark } = { ...props };
+	console.log(isDark);
 	return (
 		<ButtonBase onClick={onClick}>
-			<IoSunnyOutline as={motion.svg} />
+			<AnimatePresence mode="wait">
+				{isDark ? <IoSunnyOutline /> : <IoMoonOutline />}
+			</AnimatePresence>
 		</ButtonBase>
 	);
 };
