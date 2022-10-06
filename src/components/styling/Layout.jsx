@@ -16,6 +16,7 @@ export const zIndex = (level) => {
 	if (level === "background") return "-1";
 	if (level === "content") return "1";
 	if (level === "control") return "2";
-	if (level === "overlay") return "3";
+	if (level === "navbar") return "3";
+	if (level === "overlay") return "4";
 	return "0";
 };
