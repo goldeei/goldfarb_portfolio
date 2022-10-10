@@ -7,16 +7,15 @@ function Controls({ ...props }) {
 }
 
 const ControlContainer = styled.div`
-	position: fixed;
-	bottom: 1rem;
-	margin: 0 auto;
-	width: ${layout.defMax};
+	margin: 0 1rem;
+	width: 100%;
+	height: 100;
 	z-index: ${layout.zIndex("site-controls")};
 	display: flex;
 	justify-content: right;
 	> button {
 		border-radius: 0.25rem;
-		box-shadow: ${(props) => props.theme.containerDropShadow};
+		box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px 0px;
 		z-index: 2;
 	}
 	> button:not(:last-child) {
@@ -28,6 +27,8 @@ const ControlContainer = styled.div`
 	}
 	@media screen and (max-width: 500px) {
 		justify-content: center;
+		position: fixed;
+		bottom: 1rem;
 	}
 `;
 
