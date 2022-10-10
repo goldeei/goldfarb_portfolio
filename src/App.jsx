@@ -69,7 +69,15 @@ function App() {
 					{/* <AtomDebugObserver /> */}
 					<Content>
 						<GlobalStyle />
-						<Navbar />
+						<Navbar>
+							<Controls>
+								<Contact />
+								<ThemeSwitcher
+									onClick={() => setDark(!isDark)}
+									isDark={isDark}
+								/>
+							</Controls>
+						</Navbar>
 						<Section id="about-me" className="vertical-center">
 							<AboutMe />
 						</Section>
@@ -82,10 +90,10 @@ function App() {
 						<Section id="design">
 							<p className="vertical-center">Design</p>
 						</Section>
-						<Controls>
+						{/* <Controls>
 							<Contact />
 							<ThemeSwitcher onClick={() => setDark(!isDark)} isDark={isDark} />
-						</Controls>
+						</Controls> */}
 					</Content>
 				</RecoilRoot>
 			</ThemeProvider>
