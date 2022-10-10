@@ -8,8 +8,16 @@ import { activeSectionState } from "../../Atoms";
 const links = ["About Me", "Web Dev", "Data Analytics", "Design"];
 const kebab = (text) => `${text.toLowerCase().replace(" ", "-")}`;
 
-function Navbar() {
+function Navbar({ ...props }) {
+	const { children } = { ...props };
 	const [active, setActive] = useRecoilState(activeSectionState);
+
+	const handleNavClick = (id) => {
+		console.log(id);
+		setActive(id);
+		document.getElementById(id).scrollIntoView(true);
+	};
+
 	return (
 		<Nav id="navbar">
 			<NavbarNav id="navbar-nav">
@@ -17,9 +25,8 @@ function Navbar() {
 					{links.map((link) => (
 						<Navbutton
 							key={kebab(link)}
-							href={`#${kebab(link)}`}
 							title={link}
-							onClick={() => setActive(kebab(link))}
+							onClick={() => handleNavClick(kebab(link))}
 							active={active === kebab(link)}
 						>
 							{active === kebab(link) ? (
@@ -31,6 +38,7 @@ function Navbar() {
 						</Navbutton>
 					))}
 				</LayoutGroup>
+				{children}
 			</NavbarNav>
 		</Nav>
 	);
