@@ -3,19 +3,23 @@ import * as layout from "../Layout";
 
 const Container = styled.div.attrs((props) => ({
 	width: props.width || "max(500px, 50%)",
-	height: props.height || "70%",
+	height: props.height || "60%",
 }))`
 	${(props) => {
 		const colors = props.theme.colors;
 		return css`
-			background-color: ${colors.primary};
-			box-shadow: ${props.theme.containerDropShadow};
 			> h1 {
 				color: ${colors.mainText};
+				background-color: ${colors.primary};
+				padding: 1rem;
+				margin: 0;
+				border-radius: 0.2rem;
+				box-shadow: ${props.theme.containerDropShadow};
 			}
 		`;
 	}}
-	//Todo fullscreen broke
+
+	//TODO fullscreen broke
 	${({ fullscreen }) => {
 		if (fullscreen) {
 			return css`
@@ -42,6 +46,7 @@ const Container = styled.div.attrs((props) => ({
 	align-self: center;
 	transition-property: height, width;
 	transition-duration: 0.25s;
+	border-radius: 0.2rem;
 `;
 
 export default Container;
