@@ -11,15 +11,15 @@ import ProjectCard from "./Card";
 const variants = {
 	enter: (direction) => {
 		return {
-			x: direction > 0 ? -750 : 750,
+			rotateY: direction > 0 ? -90 : 90,
 		};
 	},
 	center: {
-		x: 0,
+		rotateY: 0,
 	},
 	exit: (direction) => {
 		return {
-			x: direction < 0 ? -750 : 750,
+			rotateY: direction < 0 ? -90 : 90,
 		};
 	},
 };
@@ -33,7 +33,7 @@ function ProjectContainer({ ...props }) {
 	return (
 		<Container ref={ref}>
 			<h1>{title}</h1>
-			{/* <Controls onClick={paginate} /> */}
+			<Controls onClick={paginate} />
 			<Nav
 				collection={projects}
 				custom={dir}
@@ -69,6 +69,7 @@ const Content = styled(motion.div)`
 	position: relative;
 	flex: 1;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	user-select: none;

@@ -29,11 +29,12 @@ export default function ComponentNav({ collection, index, onClick }) {
 }
 
 const NavContainer = styled.div`
-	margin: auto;
 	display: flex;
+	width: 100%;
 	justify-content: space-around;
-	margin-top: 0.5rem;
-	padding: 1rem;
+	box-sizing: border-box;
+	margin-top: 0.25rem;
+	padding: 0.5rem 1rem;
 	background-color: ${(props) => props.theme.colors.primary};
 `;
 const Item = ({ ...props }) => {

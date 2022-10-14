@@ -8,8 +8,11 @@ import { ButtonBase } from "../buttons/Buttons";
 const Image = styled(motion.img)`
 	position: absolute;
 	background-color: ${(props) => props.theme.colors.primary};
+	box-shadow: ${(props) => props.theme.containerDropShadow};
 	border-radius: 0.2rem;
 	margin-top: 0.25rem;
+	width: 100%;
+	height: 100%;
 `;
 
 const Controls = styled.div`
@@ -29,7 +32,15 @@ function Card({ ...props }) {
 
 	return (
 		<>
-			<Text isDark={isDark}>
+			{details.map((item, i) => (
+				<Detail
+					isDark={isDark}
+					key={i}
+					details={item}
+					fullscreen={fullscreen}
+				/>
+			))}
+			<Text initial={{ x: -100 }} animate={{ x: 0 }} isDark={isDark}>
 				<div style={{ display: "flex", flexDirection: "row" }}>
 					<h3 style={{ flex: 1 }}>{projectTitle}</h3>
 					<Controls>
@@ -43,14 +54,6 @@ function Card({ ...props }) {
 				</div>
 				<h5>{summary}</h5>
 			</Text>
-			{details.map((item, i) => (
-				<Detail
-					isDark={isDark}
-					key={i}
-					details={item}
-					fullscreen={fullscreen}
-				/>
-			))}
 		</>
 	);
 }
@@ -68,49 +71,20 @@ const Detail = ({ ...props }) => {
 				</div>
 			)}
 			<div>
-				<AnimatePresence initial={false} mode="wait">
-					{images.map((image, i) => {
-						if (image.type === "dark" && isDark) {
-							return (
-								<Image
-									key={i}
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{
-										duration: 0.2,
-									}}
-									src={image.src}
-								></Image>
-							);
-						} else if (
-							(image.type === "light" || image.type === undefined) &&
-							!isDark
-						) {
-							return (
-								<Image
-									key={i}
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{
-										duration: 0.2,
-									}}
-									src={image.src}
-								></Image>
-							);
-						}
-					})}
-				</AnimatePresence>
+				{/* TODO - Figure out way to match parent switch method, match light dark */}
+				<Image src={images[0].src} />
 			</div>
 		</StyledDetail>
 	);
 };
 
-const Text = styled.div`
-	position: absolute;
-	bottom: 0;
+const Text = styled(motion.div)`
 	padding: 1rem;
 	background-color: ${(props) => props.theme.colors.primary};
 	border-radius: 0.2rem;
+	width: 100%;
+	min-height: 30%;
+	box-sizing: border-box;
 	> * {
 		color: ${(props) => props.theme.colors.mainText};
 	}
@@ -128,6 +102,7 @@ const StyledDetail = styled.div`
 	position: relative;
 	height: 100%;
 	width: 100%;
+	margin-bottom: 0.5rem;
 	img {
 		width: 100%;
 		object-fit: contain;
