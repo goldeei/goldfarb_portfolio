@@ -1,5 +1,5 @@
 //TODO Move/refactor to GlobalStyling
-
+//TODO z-index doesn't work like this
 //Default max width
 export const defMax = "min(95vw, 1200px)";
 
