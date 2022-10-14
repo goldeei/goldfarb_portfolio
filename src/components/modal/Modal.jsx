@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CloseButton } from "../buttons/Buttons";
 import { Backdrop } from "./Backdrop";
 
-//Todo transfer to styled, refactor
+//TODO transfer to styled, refactor
 const variants = {
 	hidden: {
 		top: "-100%",
