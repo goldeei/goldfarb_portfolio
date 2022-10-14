@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { wrap } from "@popmotion/popcorn";
 
-export default function usePaginateArray(array) {
+export default function usePaginateCollection(array) {
 	const [[item, dir], setIndex] = useState([0, 0]);
 	const paginate = (newDir) => {
 		setIndex([item + newDir, newDir]);
