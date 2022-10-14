@@ -24,7 +24,7 @@ const FillerCube = () => {
 		ref.current.rotation.x += 0.01;
 	});
 	return (
-		<mesh ref={ref} position={[3, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
+		<mesh ref={ref} position={[0, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
 			<boxGeometry />
 			<meshStandardMaterial />
 		</mesh>
@@ -58,13 +58,13 @@ function App() {
 	return (
 		<ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
 			<ThemeProvider theme={theme}>
-				{/* <div id="r3f-container">
+				<div id="r3f-container">
 					<Canvas>
 						<ambientLight intensity={0.1} />
 						<directionalLight color="red" position={[10, 0, 15]} />
 						<FillerCube />
 					</Canvas>
-				</div> */}
+				</div>
 				<RecoilRoot>
 					{/* <AtomDebugObserver /> */}
 					<Content>
