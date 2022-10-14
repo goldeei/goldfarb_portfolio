@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -26,16 +26,22 @@ const variants = {
 
 function ProjectContainer({ ...props }) {
 	const { collection, title, projects } = { ...props };
-
-	const [index, dir, paginate, handleNav] = usePaginateCollection(collection);
+	const [isFullscreen, setFullscreen] = useState(false);
+	const [index, dir, paginate, handleNav] = usePaginateCollection(projects);
 	const ref = useRef(!null);
 
 	return (
 		<Container ref={ref}>
 			<h1>{title}</h1>
-			<Controls onClick={paginate} />
+			{/* <Controls onClick={paginate} /> */}
+			<Nav
+				collection={projects}
+				custom={dir}
+				index={index}
+				onClick={handleNav}
+			/>
 			<ContentWrapper>
-				<AnimatePresence mode="wait" custom={dir}>
+				<AnimatePresence mode="wait" custom={dir} initial={false}>
 					<Content
 						key={index}
 						custom={dir}
@@ -45,42 +51,27 @@ function ProjectContainer({ ...props }) {
 						exit="exit"
 						transition={{ duration: 0.25 }}
 					>
-						<ProjectCard
-							title={collection[index].label}
-							img={collection[index].imgSrc}
-						/>
+						<ProjectCard project={projects[index]} fullscreen={isFullscreen} />
 					</Content>
 				</AnimatePresence>
 			</ContentWrapper>
-			<Nav
-				collection={collection}
-				custom={dir}
-				index={index}
-				onClick={handleNav}
-			/>
 		</Container>
 	);
 }
 
 const ContentWrapper = styled.div`
-	background-color: ${(props) => props.theme.colors.background};
-	flex: 1;
-	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+	height: 100%;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 `;
 const Content = styled(motion.div)`
+	position: relative;
 	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	user-select: none;
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
 `;
 
 export default ProjectContainer;
