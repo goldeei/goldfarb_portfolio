@@ -17,6 +17,7 @@ const defaults = css`
 	background-color: ${(props) => props.theme.colors.primary};
 	box-shadow: ${(props) => props.theme.containerDropShadow};
 	margin-bottom: 0.2rem;
+	border-radius: 0.2rem;
 `;
 
 const Wrapper = styled.div`
