@@ -7,7 +7,7 @@ export default function ComponentNav({ collection, index, onClick }) {
 		<NavContainer>
 			{/* <LayoutGroup id="indicator"> */}
 			{collection.map((item, i) => (
-				<Item key={i} title={item.label} onClick={() => onClick(i)}>
+				<Item key={i} title={item.projectTitle} onClick={() => onClick(i)}>
 					<Indicator>
 						<LayoutGroup>
 							{index === i ? (
@@ -32,8 +32,9 @@ const NavContainer = styled.div`
 	margin: auto;
 	display: flex;
 	justify-content: space-around;
-	width: 80%;
 	margin-top: 0.5rem;
+	padding: 1rem;
+	background-color: ${(props) => props.theme.colors.primary};
 `;
 const Item = ({ ...props }) => {
 	const { title, children, onClick } = { ...props };
