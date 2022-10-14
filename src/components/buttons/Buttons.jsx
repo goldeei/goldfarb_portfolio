@@ -73,10 +73,9 @@ const StyledFSButton = styled(motion.button)`
 
 export const ButtonBase = ({ ...props }) => {
 	const { children, onClick } = { ...props };
+	const theme = useTheme();
 	return (
 		<StyledButtonBase
-			whileHover={{ scale: 1.07 }}
-			whileTap={{ scale: 1 }}
 			transition={{
 				ease: "easeInOut",
 				duration: 0.15,
@@ -89,11 +88,19 @@ export const ButtonBase = ({ ...props }) => {
 };
 
 const StyledButtonBase = styled(motion.button)`
-	background-color: ${(props) => props.theme.colors.primary};
 	padding: 0.1rem 0.5rem;
+	z-index: 5;
 	> svg {
 		color: ${(props) => props.theme.colors.mainText};
+		scale: 1.5;
+		background-color: inherit;
+		border-radius: 50%;
+		padding: 0.4rem;
+		box-shadow: ${(props) => props.theme.buttonShadow};
 	}
+	/* > svg:hover {
+		background-color: ${(props) => props.theme.colors.hover};
+	} */
 `;
 
 export const ThemeSwitcher = ({ ...props }) => {
