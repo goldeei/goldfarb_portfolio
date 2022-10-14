@@ -6,6 +6,9 @@ import classview_original_dark from "../../assets/images/dashboard_update/origin
 import classview_update from "../../assets/images/dashboard_update/update/Classrooms_u.png";
 import classview_update_dark from "../../assets/images/dashboard_update/update/Classrooms_u_d.png";
 
+import cute from "../../assets/images/CutePlaceholder.png";
+import inventory_original from "../../assets/images/dashboard_update/original/Inventory.png";
+
 export const projects = [
 	{
 		projectTitle: "Dashboard",
@@ -37,6 +40,40 @@ export const projects = [
 						title: "Classview Updated - Dark",
 						src: classview_update_dark,
 						type: "dark",
+					},
+				],
+			},
+		],
+	},
+	{
+		projectTitle: "Dummy Project",
+		summary: "Dumb dumb dumb dumb dumb dumb dumb",
+		details: [
+			{
+				title: "Dumb 1",
+				description: "Dumb 1Dumb - lorem ipsum dumbb",
+				images: [
+					{
+						title: "Cute but dumb",
+						src: inventory_original,
+						type: null,
+					},
+				],
+			},
+		],
+	},
+	{
+		projectTitle: "Dumber Dummy Project",
+		summary: "Dumb dumb dumb dumb dumb dumb dumb",
+		details: [
+			{
+				title: "Dumb 1",
+				description: "Dumb 1Dumb - lorem ipsum dumbb",
+				images: [
+					{
+						title: "Cute but dumb",
+						src: cute,
+						type: null,
 					},
 				],
 			},
