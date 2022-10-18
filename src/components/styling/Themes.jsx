@@ -6,11 +6,14 @@ const colors = {
 export const base = {
 	frontShadow:
 		"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;",
-	containerDropShadow:
+	midShadow:
 		"rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;",
+	midShadowTop:
+		"rgba(0, 0, 0, 0.1) 0px -4px 6px -1px, rgba(0, 0, 0, 0.06) 0px -2px 4px -1px;",
 	buttonShadow:
 		"rgba(9, 30, 66, 0.1) 0px 4px 4px -2px, rgba(9, 30, 66, 0.03) 0px 0px 0px 1px;",
 	warning: "rgb(255, 0, 0)",
+	defaultRadius: "0.2rem",
 };
 export const light = {
 	primary: "white",

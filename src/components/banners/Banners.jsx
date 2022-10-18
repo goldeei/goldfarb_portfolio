@@ -15,7 +15,7 @@ const defaults = css`
 	padding: 0.75rem;
 	width: fit-content;
 	background-color: ${(props) => props.theme.colors.primary};
-	box-shadow: ${(props) => props.theme.containerDropShadow};
+	box-shadow: ${(props) => props.theme.midShadow};
 	margin-bottom: 0.2rem;
 	border-radius: 0.2rem;
 `;

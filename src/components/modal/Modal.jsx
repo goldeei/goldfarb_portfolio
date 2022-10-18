@@ -48,7 +48,7 @@ const StyledModal = styled(motion.div)`
 	max-height: 500px;
 	background-color: ${(props) => props.theme.colors.primary};
 	color: ${(props) => props.theme.colors.mainText};
-	box-shadow: ${(props) => props.theme.containerDropShadow};
+	box-shadow: ${(props) => props.theme.midShadow};
 `;
 
 const ModalContent = styled.div`
