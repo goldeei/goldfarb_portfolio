@@ -1,13 +1,13 @@
 //Originals
-import classview_original from "../../assets/images/dashboard_update/original/Classrooms.png";
-import classview_original_dark from "../../assets/images/dashboard_update/original/Classrooms_d.png";
+import classview_original from "../../assets/images/dashboard_update/original/Classrooms.jpg";
+import classview_original_dark from "../../assets/images/dashboard_update/original/Classrooms_d.jpg";
 
 //Update
-import classview_update from "../../assets/images/dashboard_update/update/Classrooms_u.png";
-import classview_update_dark from "../../assets/images/dashboard_update/update/Classrooms_u_d.png";
+import classview_update from "../../assets/images/dashboard_update/update/Classrooms_u.jpg";
+import classview_update_dark from "../../assets/images/dashboard_update/update/Classrooms_u_d.jpg";
 
 import cute from "../../assets/images/CutePlaceholder.png";
-import inventory_original from "../../assets/images/dashboard_update/original/Inventory.png";
+import inventory_original from "../../assets/images/dashboard_update/original/Inventory.jpg";
 
 export const projects = [
 	{
