@@ -1,29 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { BiFullscreen, BiLinkExternal } from "react-icons/bi";
 
-import { ButtonBase } from "../buttons/Buttons";
-
-const Image = styled(motion.img)`
-	position: absolute;
-	background-color: ${(props) => props.theme.colors.primary};
-	box-shadow: ${(props) => props.theme.containerDropShadow};
-	border-radius: 0.2rem;
-	margin-top: 0.25rem;
-	width: 100%;
-	height: 100%;
-`;
-
-const Controls = styled.div`
-	display: inline-flex;
-	align-items: center;
-	width: 20%;
-	justify-content: space-around;
-	z-index: 2;
-	position: relative;
-`;
-const CardContainer = styled.div``;
+import { Block } from "../styling/components/Block";
 
 function Card({ ...props }) {
 	const { project, fullscreen } = { ...props };
@@ -31,81 +10,77 @@ function Card({ ...props }) {
 	const isDark = JSON.parse(window.localStorage.getItem("darkMode"));
 
 	return (
-		<>
+		<StyledCard
+			as={motion.div}
+			initial={{ x: "-100%" }}
+			animate={{ x: "0%" }}
+			exit={{ x: "-100%" }}
+			transition={{
+				type: "spring",
+				duration: 0.4,
+				bounce: 0,
+			}}
+		>
+			{/* <Text>
+				<div style={{ display: "flex", flexDirection: "row" }}>
+					<h3 style={{ flex: 1 }}>{projectTitle}</h3>
+				</div>
+			</Text> */}
 			{details.map((item, i) => (
-				<Detail
+				<CardDetails
 					isDark={isDark}
 					key={i}
 					details={item}
 					fullscreen={fullscreen}
 				/>
 			))}
-			<Text initial={{ x: -100 }} animate={{ x: 0 }} isDark={isDark}>
-				<div style={{ display: "flex", flexDirection: "row" }}>
-					<h3 style={{ flex: 1 }}>{projectTitle}</h3>
-					<Controls>
-						<ButtonBase>
-							<BiFullscreen />
-						</ButtonBase>
-						<ButtonBase>
-							<BiLinkExternal />
-						</ButtonBase>
-					</Controls>
-				</div>
+			<Text>
+				<h3 style={{ flex: 1 }}>{projectTitle}</h3>
 				<h5>{summary}</h5>
 			</Text>
-		</>
+		</StyledCard>
 	);
 }
 
-const Detail = ({ ...props }) => {
+const CardDetails = ({ ...props }) => {
 	const { fullscreen, details, isDark } = { ...props };
 	const { title, description, images } = { ...details };
 	useEffect(() => {});
 	return (
-		<StyledDetail>
-			{fullscreen && (
+		<DetailsContainer>
+			{/* {fullscreen && (
 				<div>
 					<h5>{title}</h5>
 					<h6>{description}</h6>
 				</div>
-			)}
-			<div>
-				{/* TODO - Figure out way to match parent switch method, match light dark */}
-				<Image src={images[0].src} />
-			</div>
-		</StyledDetail>
+			)} */}
+
+			{/* TODO - Figure out way to match parent switch method, match light dark */}
+			<Image src={images[0].src} />
+		</DetailsContainer>
 	);
 };
+const StyledCard = styled(Block)`
+	display: grid;
+	grid-template-rows: 6fr 2fr;
+`;
+const DetailsContainer = styled.div`
+	max-height: 100%;
+	display: flex;
+`;
 
-const Text = styled(motion.div)`
-	padding: 1rem;
-	background-color: ${(props) => props.theme.colors.primary};
-	border-radius: 0.2rem;
+const Image = styled(motion.img)`
 	width: 100%;
-	min-height: 30%;
-	box-sizing: border-box;
-	> * {
-		color: ${(props) => props.theme.colors.mainText};
-	}
+	object-fit: contain;
+`;
+
+const Text = styled.div`
 	h3 {
-		margin: 0.5rem 0;
 		color: ${(props) => props.theme.colors.mainText};
 	}
 	h5 {
 		margin: 0.25rem 0;
 		color: ${(props) => props.theme.colors.subText};
-	}
-`;
-
-const StyledDetail = styled.div`
-	position: relative;
-	height: 100%;
-	width: 100%;
-	margin-bottom: 0.5rem;
-	img {
-		width: 100%;
-		object-fit: contain;
 	}
 `;
 

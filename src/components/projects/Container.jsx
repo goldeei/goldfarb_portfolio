@@ -3,10 +3,13 @@ import styled, { css } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
 import usePaginateCollection from "../../hooks/usePaginateCollection";
-import Controls from "./Controls";
+// import Controls from "./Controls";
 import Nav from "./Nav";
 import Container from "../styling/components/Container";
+import { Block } from "../styling/components/Block";
 import ProjectCard from "./Card";
+import { ButtonBase } from "../buttons/Buttons";
+import { BiFullscreen, BiLinkExternal } from "react-icons/bi";
 
 const variants = {
 	enter: (direction) => {
@@ -25,54 +28,86 @@ const variants = {
 };
 
 function ProjectContainer({ ...props }) {
-	const { collection, title, projects } = { ...props };
-	const [isFullscreen, setFullscreen] = useState(false);
+	const { title, projects } = { ...props };
 	const [index, dir, paginate, handleNav] = usePaginateCollection(projects);
 	const ref = useRef(!null);
-
+	console.log(ref.current);
 	return (
-		<Container ref={ref}>
-			<h1>{title}</h1>
-			<Controls onClick={paginate} />
+		<CardContainer ref={ref} height={"70%"}>
+			<Block>
+				<h1>{title}</h1>
+				<Controls>
+					<ButtonBase>
+						<BiFullscreen />
+					</ButtonBase>
+					<ButtonBase>
+						<BiLinkExternal />
+					</ButtonBase>
+				</Controls>
+			</Block>
+			{/* <Controls onClick={paginate} /> */}
+			<AnimatePresence mode="wait" custom={dir} initial={false}>
+				<ProjectCard
+					key={index}
+					custom={dir}
+					variants={variants}
+					initial="enter"
+					animate="center"
+					exit="exit"
+					transition={{ duration: 0.25 }}
+					project={projects[index]}
+				/>
+			</AnimatePresence>
 			<Nav
 				collection={projects}
 				custom={dir}
 				index={index}
 				onClick={handleNav}
 			/>
-			<ContentWrapper>
-				<AnimatePresence mode="wait" custom={dir} initial={false}>
-					<Content
-						key={index}
-						custom={dir}
-						variants={variants}
-						initial="enter"
-						animate="center"
-						exit="exit"
-						transition={{ duration: 0.25 }}
-					>
-						<ProjectCard project={projects[index]} fullscreen={isFullscreen} />
-					</Content>
-				</AnimatePresence>
-			</ContentWrapper>
-		</Container>
+		</CardContainer>
 	);
 }
 
-const ContentWrapper = styled.div`
-	height: 100%;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-`;
-const Content = styled(motion.div)`
-	position: relative;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+const Controls = styled.div`
+	display: inline-flex;
 	align-items: center;
-	user-select: none;
+	width: 20%;
+	justify-content: space-around;
+	z-index: 2;
+	position: relative;
+	margin-left: auto;
+	color: black;
+	> svg {
+		fill: black;
+		scale: 3;
+	}
+`;
+
+//TODO Theme light shadow
+const CardContainer = styled(Container)`
+	display: grid;
+	grid-template-rows: 1.5fr 7fr 1.5fr;
+	background-color: rgba(255, 255, 255, 0.4);
+
+	${(props) => {
+		const radius = props.theme.defaultRadius;
+		return css`
+			box-shadow: ${props.theme.midShadow}
+			border-radius: ${radius};
+			> div:not(div:first-child, div:last-child) {
+				border-radius: 0;
+			}
+			> div:first-child {
+				border-radius: ${radius} ${radius} 0 0;
+				z-index: 2;
+			}
+			> div:last-child {
+				border-radius: 0 0 ${radius} ${radius};
+				z-index: 2;
+				box-shadow: ${props.theme.midShadowTop};
+			}
+		`;
+	}}
 `;
 
 export default ProjectContainer;

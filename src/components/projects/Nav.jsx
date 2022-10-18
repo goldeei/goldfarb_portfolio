@@ -1,6 +1,8 @@
 import { motion, LayoutGroup } from "framer-motion";
 import styled from "styled-components";
 
+import { Block } from "../styling/components/Block";
+
 export default function ComponentNav({ collection, index, onClick }) {
 	//console.log(index);
 	return (
@@ -14,7 +16,9 @@ export default function ComponentNav({ collection, index, onClick }) {
 								<>
 									<motion.div
 										className="active"
-										transition={{ layout: { duration: 0.5, ease: "easeOut" } }}
+										transition={{
+											layout: { duration: 0.5, ease: "easeOut" },
+										}}
 										layoutId="indicator"
 									/>
 								</>
@@ -28,14 +32,10 @@ export default function ComponentNav({ collection, index, onClick }) {
 	);
 }
 
-const NavContainer = styled.div`
+const NavContainer = styled(Block)`
 	display: flex;
-	width: 100%;
-	justify-content: space-around;
+	justify-content: space-between;
 	box-sizing: border-box;
-	margin-top: 0.25rem;
-	padding: 0.5rem 1rem;
-	background-color: ${(props) => props.theme.colors.primary};
 `;
 const Item = ({ ...props }) => {
 	const { title, children, onClick } = { ...props };
