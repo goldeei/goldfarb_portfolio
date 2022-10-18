@@ -31,17 +31,27 @@ export const GlobalStyle = createGlobalStyle`
     section {
         position: relative;
         display: flex;
-        ${fullscreen};
+        flex-direction: column;
+        overflow: hidden;
         &.vertical-center {
-            align-items: center;
+            justify-content: center;
         };
-        > div {
-            height: fit-content;
-	        padding: 0.75rem;
-        }
     };
+    //Colors
+    * {
+        color: ${(props) => props.theme.colors.mainText};
+    }
+    //Animations
     * {
         transition-property: background-color, color;
         transition-duration: 0.2s;
-        }
+    }
+    //Resets
+    * {
+        min-height: 0;
+        min-width: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 `;
