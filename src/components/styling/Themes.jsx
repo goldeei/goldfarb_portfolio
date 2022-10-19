@@ -16,7 +16,9 @@ export const base = {
 	defaultRadius: "0.2rem",
 };
 export const light = {
-	primary: "white",
+	primary: "rgb(255, 255, 255)",
+	primary_09: "rgba(255, 255, 255, 0.9)",
+	primary_05: "rgba(255, 255, 255, 0.5)",
 	background: "#9fd7e9",
 	mainText: "rgb(0, 0, 0)",
 	subText: "grey",
@@ -25,7 +27,9 @@ export const light = {
 	hover: "lightgrey",
 };
 export const dark = {
-	primary: "#404040",
+	primary: "rgb(64, 64, 64)",
+	primary_09: "rgba(64, 64, 64, 0.9)",
+	primary_05: "rgba(64, 64, 64, 0.5)",
 	background: "#131862",
 	mainText: "rgb(255, 255, 255)",
 	subText: "lightgrey",
