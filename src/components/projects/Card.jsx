@@ -62,11 +62,13 @@ const CardDetails = ({ ...props }) => {
 };
 const StyledCard = styled(Block)`
 	display: grid;
-	grid-template-rows: 6fr 2fr;
+	grid-template-rows: 3fr 1fr;
+	background-color: ${(props) => props.theme.colors.primary_05};
 `;
 const DetailsContainer = styled.div`
 	max-height: 100%;
 	display: flex;
+	margin-bottom: 1rem;
 `;
 
 const Image = styled(motion.img)`
