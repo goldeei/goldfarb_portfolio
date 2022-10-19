@@ -14,7 +14,7 @@ export default Banners;
 const defaults = css`
 	padding: 0.75rem;
 	width: fit-content;
-	background-color: ${(props) => props.theme.colors.primary};
+	background-color: ${(props) => props.theme.colors.primary_09};
 	box-shadow: ${(props) => props.theme.midShadow};
 	margin-bottom: 0.2rem;
 	border-radius: 0.2rem;
