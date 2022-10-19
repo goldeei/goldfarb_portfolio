@@ -10,21 +10,17 @@ export default function ComponentNav({ collection, index, onClick }) {
 			{/* <LayoutGroup id="indicator"> */}
 			{collection.map((item, i) => (
 				<Item key={i} title={item.projectTitle} onClick={() => onClick(i)}>
-					<Indicator>
 						<LayoutGroup>
 							{index === i ? (
-								<>
-									<motion.div
-										className="active"
-										transition={{
-											layout: { duration: 0.5, ease: "easeOut" },
-										}}
-										layoutId="indicator"
-									/>
-								</>
+								<Indicator
+									
+									key={i} 
+									transition={{
+										layout: { duration: 0.5, ease: "easeOut" },
+									}}
+									layoutId="indicator" />
 							) : null}
 						</LayoutGroup>
-					</Indicator>
 				</Item>
 			))}
 			{/* </LayoutGroup> */}
@@ -48,26 +44,25 @@ const Item = ({ ...props }) => {
 	);
 };
 const ItemButton = styled(motion.button)`
-	border: 1px solid black;
 	padding: 0.5rem 1rem;
 	flex: 1;
 	margin: 0 0.25rem;
 	position: relative;
+	font-size: 0.75rem;
+	box-shadow: ${(props) => props.theme.buttonShadow};
+	border-radius: ${(props) => props.theme.defaultRadius};
+	color: ${(props) => props.theme.colors.mainText};
+	background-color: ${(props) => props.theme.colors.primary};
+	overflow: hidden;
 `;
 
-const Indicator = styled.div`
-	height: 0.25rem;
-	width: 100%;
-	background-color: lightgrey;
+const Indicator = styled(motion.div)`
 	position: absolute;
-	top: -1rem;
+	width: 100%;
+	height: 100%;
+	top: 0;
 	left: 0;
+	z-index: -1;
 	border-radius: 0.25rem;
 	overflow: hidden;
-	& .active {
-		border-radius: inherit;
-		width: 100%;
-		height: 100%;
-		background-color: blue;
-	}
 `;
