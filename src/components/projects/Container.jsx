@@ -31,7 +31,6 @@ function ProjectContainer({ ...props }) {
 	const { title, projects } = { ...props };
 	const [index, dir, paginate, handleNav] = usePaginateCollection(projects);
 	const ref = useRef(!null);
-	console.log(ref.current);
 	return (
 		<CardContainer ref={ref} height={"70%"}>
 			<Block>
@@ -58,12 +57,7 @@ function ProjectContainer({ ...props }) {
 					project={projects[index]}
 				/>
 			</AnimatePresence>
-			<Nav
-				collection={projects}
-				custom={dir}
-				index={index}
-				onClick={handleNav}
-			/>
+			<Nav collection={projects} index={index} onClick={handleNav} />
 		</CardContainer>
 	);
 }
@@ -86,8 +80,8 @@ const Controls = styled.div`
 //TODO Theme light shadow
 const CardContainer = styled(Container)`
 	display: grid;
-	grid-template-rows: 1.5fr 7fr 1.5fr;
-	background-color: rgba(255, 255, 255, 0.4);
+	grid-template-rows: 1.2fr 7fr 1.5fr;
+	background-color: ${(props) => props.theme.colors.primary_05};
 
 	${(props) => {
 		const radius = props.theme.defaultRadius;
