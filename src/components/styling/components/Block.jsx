@@ -14,7 +14,7 @@ export const Block = styled.div`
 		const colors = props.theme.colors;
 		return css`
 			width: ${props.fit ? "fit-content" : "100%"};
-			background-color: ${colors.primary};
+			background-color: ${colors.primary_09};
 			colors: ${colors.mainText};
 			box-shadow: ${props.theme.midShadow};
 			border-radius: ${props.theme.defaultRadius};
