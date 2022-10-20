@@ -9,17 +9,6 @@ const shadowProps = {
 	shadowBias: -0.0002,
 };
 
-const Hemisphere = () => {
-	return (
-		<hemisphereLight
-			intensity={0.5}
-			color={0xf48037}
-			groundColor={0x87ceeb}
-			position={[2.5, 10, 6]}
-		/>
-	);
-};
-
 const Sun = ({ ...props }) => {
 	const { color } = { ...props };
 	const sun = useRef(!null);
@@ -48,10 +37,8 @@ const Sun = ({ ...props }) => {
 
 function Lighting({ ...props }) {
 	const { themeColor } = { ...props };
-	console.log(themeColor);
 	return (
 		<>
-			{/* <Hemisphere /> */}
 			<ambientLight intensity={0.3} />
 			<Sun color={themeColor} />
 		</>

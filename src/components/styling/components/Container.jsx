@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const Container = styled.div.attrs((props) => ({
-	width: props.width || "max(500px, 50%)",
+	width: props.width || "max(500px, 55%)",
 	height: props.height || "80%",
 }))`
 	${(props) => {

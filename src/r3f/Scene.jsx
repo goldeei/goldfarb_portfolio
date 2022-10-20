@@ -14,15 +14,7 @@ function Scene({ ...props }) {
 					<ambientLight intensity={0.1} />
 					<Lighting themeColor={themeColor} />
 					<Character />
-					<OrbitControls enableZoom={true} />
-					{/* <ContactShadows
-                        opacity={1}
-                        scale={10}
-                        blur={1}
-                        far={10}
-                        resolution={256}
-                        color="#000000"
-                    /> */}
+					{/* <OrbitControls enableZoom={true} /> */}
 				</Canvas>
 			</Suspense>
 		</div>
