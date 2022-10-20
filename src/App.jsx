@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef, createContext } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 
 import AtomDebugObserver from "./AtomDebugObserver";
+import Scene from "./r3f/Scene";
 import * as Layout from "./components/styling/Layout";
 import { GlobalStyle } from "./components/styling/GlobalStyle";
 import { base, light, dark } from "./components/styling/Themes";
@@ -17,19 +17,6 @@ import Contact from "./components/contact/Contact";
 import AboutMe from "./components/about-me/AboutMe";
 import WebDev from "./components/web-dev/WebDev";
 import "./App.css";
-
-const FillerCube = () => {
-	const ref = useRef();
-	useFrame(() => {
-		ref.current.rotation.x += 0.01;
-	});
-	return (
-		<mesh ref={ref} position={[0, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-			<boxGeometry />
-			<meshStandardMaterial />
-		</mesh>
-	);
-};
 
 const Content = styled.div`
 	position: relative;
@@ -58,13 +45,7 @@ function App() {
 	return (
 		<ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
 			<ThemeProvider theme={theme}>
-				<div id="r3f-container">
-					<Canvas>
-						<ambientLight intensity={0.1} />
-						<directionalLight color="red" position={[10, 0, 15]} />
-						<FillerCube />
-					</Canvas>
-				</div>
+				<Scene />
 				<RecoilRoot>
 					{/* <AtomDebugObserver /> */}
 					<Content>
