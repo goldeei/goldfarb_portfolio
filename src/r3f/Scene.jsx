@@ -6,13 +6,13 @@ import Character from "./character/Character";
 import Lighting from "./Lighting";
 
 function Scene({ ...props }) {
-	const { themeColor } = { ...props };
+	const { isDark } = { ...props };
 	return (
 		<div id="r3f-container">
 			<Suspense fallback={null}>
 				<Canvas shadows>
 					<ambientLight intensity={0.1} />
-					<Lighting themeColor={themeColor} />
+					<Lighting isDark={isDark} />
 					<Character />
 					{/* <OrbitControls enableZoom={true} /> */}
 				</Canvas>

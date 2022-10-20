@@ -6,19 +6,20 @@ import { DirectionalLightHelper, SpotLightHelper } from "three";
 const shadowProps = {
 	shadowMapSizeHeight: 1024,
 	shadowMapSizeWidth: 1024,
-	shadowBias: -0.0002,
+	shadowBias: -0.00018,
 };
 
 const Sun = ({ ...props }) => {
-	const { color } = { ...props };
+	const { isDark } = { ...props };
 	const sun = useRef(!null);
-
+	const color = isDark ? "#cbbfd9" : "#e5f9ff";
+	const intensity = isDark ? 4 : 10;
 	return (
 		<SpotLight
 			ref={sun}
 			castShadow
-			color={`${color}`}
-			intensity={7.5}
+			color={color}
+			intensity={intensity}
 			distance={14}
 			position={[2.5, 10, 6]}
 			angle={0.5}
@@ -36,11 +37,11 @@ const Sun = ({ ...props }) => {
 };
 
 function Lighting({ ...props }) {
-	const { themeColor } = { ...props };
+	const { isDark } = { ...props };
 	return (
 		<>
 			<ambientLight intensity={0.3} />
-			<Sun color={themeColor} />
+			<Sun isDark={isDark} />
 		</>
 	);
 }
