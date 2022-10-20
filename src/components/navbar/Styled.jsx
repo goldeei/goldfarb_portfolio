@@ -17,7 +17,7 @@ export const NavbarNav = styled.ul(
 		background-color: ${theme.colors.primary};
 		margin: 0.2rem auto;
 		padding: 0;
-		height: 3rem;
+		height: 3.25rem;
 		border-radius: 0.15rem;
 		max-width: ${layout.defMax};
 		list-style-type: none;
