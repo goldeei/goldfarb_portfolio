@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useTheme } from "styled-components";
 import { useHelper, SpotLight } from "@react-three/drei";
 import { DirectionalLightHelper, SpotLightHelper } from "three";
 
@@ -19,13 +20,15 @@ const Hemisphere = () => {
 	);
 };
 
-const Sun = () => {
+const Sun = ({ ...props }) => {
+	const { color } = { ...props };
 	const sun = useRef(!null);
-	// useHelper(sun, SpotLightHelper, "red");
+
 	return (
 		<SpotLight
 			ref={sun}
 			castShadow
+			color={`${color}`}
 			intensity={7.5}
 			distance={14}
 			position={[2.5, 10, 6]}
@@ -43,12 +46,14 @@ const Sun = () => {
 	);
 };
 
-function Lighting() {
+function Lighting({ ...props }) {
+	const { themeColor } = { ...props };
+	console.log(themeColor);
 	return (
 		<>
 			{/* <Hemisphere /> */}
 			<ambientLight intensity={0.3} />
-			<Sun />
+			<Sun color={themeColor} />
 		</>
 	);
 }

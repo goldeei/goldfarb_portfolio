@@ -45,7 +45,7 @@ function App() {
 	return (
 		<ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
 			<ThemeProvider theme={theme}>
-				<Scene />
+				<Scene themeColor={theme.colors.primary} />
 				<RecoilRoot>
 					{/* <AtomDebugObserver /> */}
 					<Content>
